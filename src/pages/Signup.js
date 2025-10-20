@@ -1,6 +1,7 @@
 import { useState } from "react";
 import api from "../api/axiosConfig";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import "./Signup.css";
 
 function Signup() {
   const [userId, setUserId] = useState("");
@@ -37,49 +38,72 @@ function Signup() {
   };
 
   return (
-    <div>
-      <h2>회원가입</h2>
-      <form onSubmit={handleSignup}>
-        <input
-          type="text"
-          placeholder="아이디"
-          value={userId}
-          onChange={(e) => setUserId(e.target.value)}
-        ></input>
+    <div className="signup-container">
+      <div className="signup-box">
+        <h2 className="signup-title">회원가입</h2>
+        <form onSubmit={handleSignup} className="signup-form">
+          <input
+            type="text"
+            className="signup-input"
+            placeholder="아이디"
+            value={userId}
+            onChange={(e) => setUserId(e.target.value)}
+            required
+          />
+          {errors.userIdDuplicated && (
+            <p className="signup-error">{errors.userIdDuplicated}</p>
+          )}
 
-        <input
-          type="password"
-          placeholder="비밀번호"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        ></input>
+          <input
+            type="password"
+            className="signup-input"
+            placeholder="비밀번호"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
 
-        <input
-          type="password"
-          placeholder="비밀번호 확인"
-          value={passwordCheck}
-          onChange={(e) => setPasswordCheck(e.target.value)}
-        ></input>
+          <input
+            type="password"
+            className="signup-input"
+            placeholder="비밀번호 확인"
+            value={passwordCheck}
+            onChange={(e) => setPasswordCheck(e.target.value)}
+            required
+          />
+          {errors.passwordNotSame && (
+            <p className="signup-error">{errors.passwordNotSame}</p>
+          )}
 
-        <input
-          type="text"
-          placeholder="이메일"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        ></input>
-        <input
-          type="text"
-          placeholder="핸드폰 번호"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-        ></input>
+          <input
+            type="email"
+            className="signup-input"
+            placeholder="이메일"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          {errors.email && <p className="signup-error">{errors.email}</p>}
 
-        {errors.userId && <p style={{ color: "red" }}>{errors.userId}</p>}
-        {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
-        {errors.iderror && <p style={{ color: "red" }}>{errors.iderror}</p>}
+          <input
+            type="tel"
+            className="signup-input"
+            placeholder="핸드폰 번호 (010-1234-5678)"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            required
+          />
+          {errors.phone && <p className="signup-error">{errors.phone}</p>}
 
-        <button type="submit">회원가입</button>
-      </form>
+          <button type="submit" className="signup-submit-btn">
+            회원가입
+          </button>
+        </form>
+        <div className="signup-login-link">
+          이미 계정이 있으신가요?
+          <Link to="/login">로그인</Link>
+        </div>
+      </div>
     </div>
   );
 }
