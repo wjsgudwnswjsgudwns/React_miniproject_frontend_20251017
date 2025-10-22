@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axiosConfig";
-import "./BoardWrite.css";
+import "./TacticsWrite.css";
 
-function BoardWrite({ user }) {
+function TacticsWrite({ user }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [errors, setErrors] = useState({});
@@ -18,8 +18,8 @@ function BoardWrite({ user }) {
       return;
     }
     try {
-      await api.post("/api/board", { title, content });
-      navigate("/board");
+      await api.post("/api/tactics", { title, content });
+      navigate("/tactics");
     } catch (err) {
       if (err.response && err.response.status === 400) {
         setErrors(err.response.data);
@@ -56,4 +56,4 @@ function BoardWrite({ user }) {
   );
 }
 
-export default BoardWrite;
+export default TacticsWrite;

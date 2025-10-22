@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import api from "../api/axiosConfig";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Board.css";
+import api from "../api/axiosConfig";
+import "./Tactics.css";
 
-function Board({ user }) {
+function Tactics({ user }) {
   const [posts, setPosts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchType, setSearchType] = useState("title");
@@ -25,7 +25,7 @@ function Board({ user }) {
       setLoading(true);
       setError("");
 
-      let url = `/api/board?page=${page}&size=10`;
+      let url = `/api/tactics?page=${page}&size=10`;
 
       // 검색어가 있으면 검색 파라미터 추가
       if (keyword && keyword.trim()) {
@@ -65,12 +65,12 @@ function Board({ user }) {
       navigate("/login");
       return;
     }
-    navigate("/board/write");
+    navigate("/tactics/write");
   };
 
   // 게시글 클릭
   const handlePostClick = (postId) => {
-    navigate(`/board/${postId}`);
+    navigate(`/tactics/${postId}`);
   };
 
   // 페이지 번호 표시 함수
@@ -87,7 +87,7 @@ function Board({ user }) {
   return (
     <div className="board-container">
       <div className="board-header">
-        <h1 className="board-title">자유게시판</h1>
+        <h1 className="board-title">전술게시판</h1>
         <form className="search-box" onSubmit={handleSearch}>
           <select
             className="search-select"
@@ -212,4 +212,4 @@ function Board({ user }) {
   );
 }
 
-export default Board;
+export default Tactics;

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import api from "../api/axiosConfig";
-import "./CommentList.css";
+import "./TacticsCommentList.css";
 
-function CommentList({ loadComment, user, comments }) {
+function TacticsCommentList({ loadComment, user, comments }) {
   const [editCommentContent, setEditCommentContent] = useState("");
   const [editCommentId, setEditCommentId] = useState(null);
 
@@ -16,7 +16,7 @@ function CommentList({ loadComment, user, comments }) {
       return;
     }
     try {
-      await api.delete(`/api/comment/${commentId}`);
+      await api.delete(`/api/tactics/comment/${commentId}`);
       alert("댓글이 삭제 되었습니다.");
       loadComment();
     } catch (err) {
@@ -33,7 +33,7 @@ function CommentList({ loadComment, user, comments }) {
     }
 
     try {
-      await api.put(`/api/comment/${commentId}`, {
+      await api.put(`/api/tactics/comment/${commentId}`, {
         content: editCommentContent,
       });
       setEditCommentId(null);
@@ -126,4 +126,4 @@ function CommentList({ loadComment, user, comments }) {
   );
 }
 
-export default CommentList;
+export default TacticsCommentList;

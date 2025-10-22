@@ -9,6 +9,7 @@ function Signup() {
   const [passwordCheck, setPasswordCheck] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [nickname, setNickname] = useState("");
 
   const [errors, setErrors] = useState({});
 
@@ -24,6 +25,7 @@ function Signup() {
         email,
         phone,
         passwordCheck,
+        nickname,
       });
       alert("회원 가입 성공");
       navigate("/login");
@@ -52,6 +54,18 @@ function Signup() {
           />
           {errors.userIdDuplicated && (
             <p className="signup-error">{errors.userIdDuplicated}</p>
+          )}
+
+          <input
+            type="text"
+            className="signup-input"
+            placeholder="닉네임"
+            value={nickname}
+            onChange={(e) => setNickname(e.target.value)}
+            required
+          />
+          {errors.nicknameDuplicated && (
+            <p className="signup-error">{errors.nicknameDuplicated}</p>
           )}
 
           <input
@@ -88,7 +102,7 @@ function Signup() {
           <input
             type="tel"
             className="signup-input"
-            placeholder="핸드폰 번호 (010-1234-5678)"
+            placeholder="핸드폰 번호 (01012345678)"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             required

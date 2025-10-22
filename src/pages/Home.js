@@ -4,7 +4,7 @@ import "./Home.css";
 // 배경 이미지 파일 경로 (src/images/Home.jpg)
 import HomeBackground from "../images/Home.jpg";
 
-function Home() {
+function Home({ user }) {
   return (
     <div className="home-container">
       {/* 1. 히어로 섹션: 여기에만 배경 이미지를 적용합니다. */}
@@ -21,8 +21,11 @@ function Home() {
           <Link to="/buy" className="pre-purchase-btn">
             지금 선구매
           </Link>
+          <Link to="/tactics" className="learn-more-btn">
+            전술 게시판
+          </Link>
           <Link to="/board" className="learn-more-btn">
-            주요 기능 살펴보기
+            자유 게시판
           </Link>
         </div>
       </header>
@@ -51,9 +54,12 @@ function Home() {
         <h2>커뮤니티 및 뉴스</h2>
         <p>새로운 소식과 독점 정보를 확인하고 FMFC에 가입하세요.</p>
         {/* 실제 경로에 맞게 Link to를 수정하세요 */}
-        <Link to="/signup" className="join-fmfc-btn">
-          FMFC 가입하기
-        </Link>
+
+        {!user && (
+          <Link to="/signup" className="join-fmfc-btn">
+            FMFC 가입하기
+          </Link>
+        )}
       </section>
     </div>
   );
