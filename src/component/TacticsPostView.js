@@ -71,7 +71,9 @@ function TacticsPostView({ post, user, setEdit, setPost }) {
       <div className="post-view-header">
         <h2 className="post-view-title">{post.title}</h2>
         <div className="post-view-meta">
-          <span className="post-view-author">작성자: {post.author.userId}</span>
+          <span className="post-view-author">
+            작성자: {post.author.nickname}
+          </span>
           <span className="post-view-author">조회수: {post.view}</span>
           {post.createdAt && (
             <span className="post-view-date">{formatDate(post.createdAt)}</span>
@@ -81,21 +83,17 @@ function TacticsPostView({ post, user, setEdit, setPost }) {
 
       <div className="post-view-content">{post.content}</div>
 
-      <div className="post-like-btn">
-        <button
-          className={`post-like-btn ${liked ? "liked" : ""}`}
-          onClick={handleLike}
-        >
+      <div className="post-btn-container">
+        {/* 추천 버튼 */}
+        <button className={liked ? "liked" : ""} onClick={handleLike}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M14 9V5a3 3 0 0 0-3-3L8 9H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10.28a2 2 0 0 0 1.94-1.5l2.33-8A2 2 0 0 0 16.61 9H14z" />
           </svg>
           {post.likes}
         </button>
 
-        <button
-          className={`post-like-btn ${disLiked ? "disliked" : ""}`}
-          onClick={handleDisLike}
-        >
+        {/* 비추천 버튼 */}
+        <button className={disLiked ? "disliked" : ""} onClick={handleDisLike}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M10 15v4a3 3 0 0 0 3 3l3-7h4a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H9.72a2 2 0 0 0-1.94 1.5l-2.33 8A2 2 0 0 0 7.39 15H10z" />
           </svg>

@@ -155,7 +155,7 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #fff;
-  color: #e74c3c;
+  color: #4d3ce7;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
@@ -165,7 +165,7 @@
 
 .post-like-btn button:hover {
   background-color: #fff5f5;
-  border-color: #e74c3c;
+  border-color: #4d3ce7;
   transform: translateY(-2px);
   box-shadow: 0 3px 8px rgba(231, 76, 60, 0.2);
 }
@@ -174,16 +174,16 @@
   width: 20px;
   height: 20px;
   fill: none;
-  stroke: #e74c3c;
+  stroke: #4d3ce7;
   stroke-width: 2;
   transition: all 0.2s ease;
 }
 
 /* 추천 완료 시 스타일 */
 .post-like-btn button.liked {
-  background-color: #e74c3c;
+  background-color: #4d3ce7;
   color: #fff;
-  border-color: #e74c3c;
+  border-color: #4d3ce7;
 }
 
 .post-like-btn button.liked svg {
